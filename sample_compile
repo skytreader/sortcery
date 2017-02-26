@@ -1,0 +1,2 @@
+# Only until I get to write a Makefile for this!
+gcc -o build/test src/tests/utils-test.c src/utils.c -lcriterion
