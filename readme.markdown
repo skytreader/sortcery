@@ -1,5 +1,7 @@
 # sortcery
 
+For the purposes of this exercise, sorting is always in ascending order.
+
 # Set-up
 
 Install [Criterion](https://github.com/Snaipe/Criterion).

@@ -47,3 +47,16 @@ int min(int arr[], int limit){
     }
     return min_i;
 }
+
+/**
+Swap the values at i and j of `arr`. Automagic assumption that i and j are
+within bounds.
+
+@param arr
+@param i
+@param j
+*/
+void swap(int arr[], int i, int j){
+    arr[i] += arr[j];
+    arr[j] = arr[i] - arr[j];
+}

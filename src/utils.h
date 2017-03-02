@@ -2,3 +2,4 @@
 
 int max(int arr[], int limit);
 int min(int arr[], int limit);
+void swap(int arr[], int i, int j);

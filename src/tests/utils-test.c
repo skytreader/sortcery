@@ -30,3 +30,11 @@ Test(min_tests, all) {
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     cr_assert(min(usual_case, arrsize(usual_case)) == 0, "Usual case");
 }
+
+Test(swap_tests, all) {
+    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
+    
+    swap(usual_case, 3, 4);
+    cr_assert(memcmp(usual_case, swap_3_4, arrsize(usual_case)) == 0, "Swap 3, 4");
+}
