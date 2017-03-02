@@ -31,10 +31,18 @@ Test(min_tests, all) {
     cr_assert(min(usual_case, arrsize(usual_case)) == 0, "Usual case");
 }
 
-Test(swap_tests, all) {
+Test(swap_test, all) {
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
     swap(usual_case, 3, 4);
     cr_assert(memcmp(usual_case, swap_3_4, arrsize(usual_case)) == 0, "Swap 3, 4");
+}
+
+Test(swap_test_commutative, all) {
+    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
+    
+    swap(usual_case, 4, 3);
+    cr_assert(memcmp(usual_case, swap_3_4, arrsize(usual_case)) == 0, "Swap 4, 3");
 }
