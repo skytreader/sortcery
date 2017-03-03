@@ -61,8 +61,8 @@ within bounds.
 void swap(int arr[], int i, int j){
     arr[i] += arr[j];
     arr[j] = arr[i] - arr[j];
+    arr[i] -= arr[j];
 }
-
 
 void printarr(int arr[], int limit){
     int i;
