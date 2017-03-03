@@ -25,6 +25,7 @@ void insert(int arr[], int sorted_limit, int limit){
     int i;
     for(i = sorted_limit; i >= 0; i--){
         int move_candidate = arr[i + 1];
+        printarr(arr, limit);
         if(move_candidate < arr[i]){
             swap(arr, i, i + 1);
         } else{
