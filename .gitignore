@@ -5,5 +5,7 @@
 *.log.*
 *.bak
 *.o
+*.gcda
+*.gcno
 _test*
 build/
