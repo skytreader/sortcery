@@ -2,12 +2,26 @@
 #include "../insertion.h"
 #include "../utils.h"
 
-Test(insert_tests, all) {
+Test(insert_tests_happy, all) {
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int inserted[] = {1, 1, 4, 5, 9, 2, 6};
-    int usual_case_size = arrsize(usual_case);
+    int usual_case_size = sizeof(usual_case);
 
+    cr_assert(memcmp(usual_case, inserted, usual_case_size) != 0, "Pre-check");
     insert(usual_case, 1, usual_case_size);
+    cr_assert(memcmp(usual_case, inserted, usual_case_size) == 0, "insert works");
+}
 
-    cr_assert(memcmp(usual_case, inserted, usual_case_size) == 0, "Insert works");
+Test(insert_tests_limit, all) {
+    /*
+    I know this is not sorted but this also tests that the function treats its
+    assumptions seriously.
+    */
+    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int cp_usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int usual_case_size = sizeof(usual_case);
+    
+    cr_assert(memcmp(usual_case, cp_usual_case, usual_case_size) == 0, "Pre-check");
+    insert(usual_case, usual_case_size, usual_case_size);
+    cr_assert(memcmp(usual_case, cp_usual_case, usual_case_size) == 0, "insert respects assumptions");
 }
