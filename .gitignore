@@ -5,5 +5,5 @@
 *.log.*
 *.bak
 *.o
-test*
+_test*
 build/
