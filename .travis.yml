@@ -1,0 +1,10 @@
+language: c
+sudo: required
+dist: trusty
+before_install:
+    - sudo add-apt-repository ppa:snaipewastaken/ppa
+    - sudo apt-get update
+    - sudo apt-get install criterion-dev
+install: "make test"
+before_script: "mkdir build"
+script: "./build/test"
