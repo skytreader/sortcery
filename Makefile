@@ -1,4 +1,4 @@
-all-tests: build/utils-test.o build/utils.o build/insertion-test.o build/insertion.o
+all-tests: utils-test.o utils.o insertion-test.o insertion.o
 	gcc -fprofile-arcs -ftest-coverage -o build/all-tests build/utils.o build/utils-test.o build/insertion.o build/insertion-test.o -lcriterion
 
 utils.o: src/utils.c src/utils.h
