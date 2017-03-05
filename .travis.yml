@@ -7,7 +7,7 @@ before_install:
     - sudo apt-get -y install criterion-dev
     - pip install --user cpp-coveralls
     - mkdir build
-install: "make test"
-script: "./build/test"
+install: "make all-tests"
+script: "./build/all-tests"
 after_success:
     - coveralls --exclude lib --exclude tests --gcov-options '\-lp'

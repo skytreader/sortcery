@@ -1,5 +1,5 @@
-all_tests: src/tests/utils-test.c src/utils.c src/insertion.c src/tests/insertion-test.c
-	gcc -fprofile-arcs -ftest-coverage -o build/test build/utils-test.o build/insertion-test.o -lcriterion
+all-tests: build/utils-test.o build/utils.o build/insertion-test.o build/insertion.o
+	gcc -fprofile-arcs -ftest-coverage -o build/all-tests build/utils.o build/utils-test.o build/insertion.o build/insertion-test.o -lcriterion
 
 utils.o: src/utils.c src/utils.h
 	gcc -c src/utils.c -o build/utils.o
