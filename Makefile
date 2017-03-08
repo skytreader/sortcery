@@ -1,4 +1,9 @@
-TEST_FLAGS = -fprofile-arcs -ftest-coverage
+TEST =
+TEST_FLAGS = 
+
+ifeq ($(TEST), y)
+    TEST_FLAGS = -fprofile-arcs -ftest-coverage
+endif
 
 all-tests: utils-test.o utils.o insertion-test.o insertion.o
 	gcc $(TEST_FLAGS) -o build/all-tests build/utils.o build/utils-test.o build/insertion.o build/insertion-test.o -lcriterion
