@@ -14,7 +14,8 @@ be modified accordingly.
     The length of the array.
 */
 void insert(int arr[], int sorted_limit, int limit){
-    if(limit < 0){
+    // These cases make no sense.
+    if(limit < 0 || sorted_limit > limit){
         exit(1);
     }
 
@@ -33,5 +34,15 @@ void insert(int arr[], int sorted_limit, int limit){
     }
 }
 
+/**
+Sorts the given array from indices [0, limit).
+
+@param arr
+@param limit
+    Hopefully, the length of the array.
+*/
 void sort(int arr[], int limit){
+    int i;
+    for(i = 1; i < limit; i++){
+    }
 }
