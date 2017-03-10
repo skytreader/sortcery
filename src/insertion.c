@@ -44,5 +44,6 @@ Sorts the given array from indices [0, limit).
 void sort(int arr[], int limit){
     int i;
     for(i = 1; i < limit; i++){
+        insert(arr, i, limit);
     }
 }
