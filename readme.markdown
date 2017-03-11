@@ -1,5 +1,8 @@
 # sortcery
 
+[![Build Status](https://travis-ci.org/skytreader/sortcery.svg?branch=master)](https://travis-ci.org/skytreader/sortcery)
+[![Coverage Status](https://coveralls.io/repos/github/skytreader/sortcery/badge.svg?branch=master)](https://coveralls.io/github/skytreader/sortcery?branch=master)
+
 For the purposes of this exercise, sorting is always in ascending order.
 
 # Set-up
