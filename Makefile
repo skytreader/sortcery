@@ -11,8 +11,8 @@ endif
 # Unit test executables.
 ################################################################################
 
-all-tests: utils-tests.o utils.o insertion-tests.o insertion.o
-	gcc $(TEST_FLAGS) -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o -lcriterion
+all-tests: utils-tests.o utils.o insertion-tests.o insertion.o bubble-tests.o bubble.o
+	gcc $(TEST_FLAGS) -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o build/bubble-tests.o build/bubble.o -lcriterion
 
 utils-tests: utils-tests.o utils.o
 	gcc $(TEST_FLAGS) -o build/utils-tests build/utils.o build/utils-tests.o -lcriterion

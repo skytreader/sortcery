@@ -41,7 +41,7 @@ Sorts the given array from indices [0, limit).
 @param limit
     Hopefully, the length of the array.
 */
-void sort(int arr[], int limit){
+void insertion_sort(int arr[], int limit){
     int i;
     for(i = 1; i < limit; i++){
         insert(arr, i, limit);

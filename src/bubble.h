@@ -1,1 +1,1 @@
-void sort(int arr[], int limit);
+void bubble_sort(int arr[], int limit);
