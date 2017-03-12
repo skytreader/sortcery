@@ -11,14 +11,14 @@ endif
 # Unit test executables.
 ################################################################################
 
-all-tests: utils-test.o utils.o insertion-test.o insertion.o
-	gcc $(TEST_FLAGS) -o build/all-tests build/utils.o build/utils-test.o build/insertion.o build/insertion-test.o -lcriterion
+all-tests: utils-tests.o utils.o insertion-tests.o insertion.o
+	gcc $(TEST_FLAGS) -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o -lcriterion
 
-utils-test: utils-test.o utils.o
-	gcc $(TEST_FLAGS) -o build/utils-test build/utils.o build/utils-test.o -lcriterion
+utils-tests: utils-tests.o utils.o
+	gcc $(TEST_FLAGS) -o build/utils-tests build/utils.o build/utils-tests.o -lcriterion
 
-insertion-test: insertion-test.o insertion.o utils.o
-	gcc $(TEST_FLAGS) -o build/insertion-test build/insertion-test.o build/insertion.o build/utils.o -lcriterion
+insertion-tests: insertion-tests.o insertion.o utils.o
+	gcc $(TEST_FLAGS) -o build/insertion-tests build/insertion-tests.o build/insertion.o build/utils.o -lcriterion
 
 bubble-tests: bubble-tests.o bubble.o utils.o
 	gcc $(TEST_FLAGS) -o build/bubble-tests build/bubble-tests.o build/bubble.o build/utils.o -lcriterion
@@ -40,11 +40,11 @@ bubble.o: src/bubble.c src/bubble.h src/utils.h
 # Individual object files for per-module unittests.
 ################################################################################
 
-utils-test.o: src/tests/utils-test.c
-	gcc $(TEST_FLAGS) -c src/tests/utils-test.c -o build/utils-test.o
+utils-tests.o: src/tests/utils-tests.c
+	gcc $(TEST_FLAGS) -c src/tests/utils-tests.c -o build/utils-tests.o
 
-insertion-test.o: src/tests/insertion-test.c
-	gcc $(TEST_FLAGS) -c src/tests/insertion-test.c -o build/insertion-test.o
+insertion-tests.o: src/tests/insertion-tests.c
+	gcc $(TEST_FLAGS) -c src/tests/insertion-tests.c -o build/insertion-tests.o
 
 bubble-tests.o: src/tests/bubble-tests.c
 	gcc $(TEST_FLAGS) -c src/tests/bubble-tests.c -o build/bubble-tests.o
