@@ -50,3 +50,12 @@ Test(swap_test_commutative, all) {
     swap(usual_case, 4, 3);
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
 }
+
+Test(smart_swap, all){
+    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
+    
+    cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) != 0, "Pre-swap");
+    safe_swap(usual_case, 4, 3);
+    cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
+}

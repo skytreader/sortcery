@@ -54,6 +54,10 @@ int min(int arr[], int limit){
 Swap the values at i and j of `arr`. Automagic assumption that i and j are
 within bounds.
 
+WARNING: This method is not safe. Swapping large integer values might cause an
+overflow condition. The only reason to use this, if at all, is that it is
+lighter on memory ever-so-slightly.
+
 @param arr
 @param i
 @param j
@@ -62,6 +66,20 @@ void swap(int arr[], int i, int j){
     arr[i] += arr[j];
     arr[j] = arr[i] - arr[j];
     arr[i] -= arr[j];
+}
+
+/**
+The safest swap method to use. Does not try to be clever and just gets the job
+done (TM).
+
+@param arr
+@param i
+@param j
+*/
+void safe_swap(int arr[], int i, int j){
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
 }
 
 void printarr(int arr[], int limit){
