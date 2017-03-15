@@ -3,7 +3,7 @@
 
 #include "../utils.h"
 
-Test(max_tests, all) {
+Test(max_tests, all){
     int test1[] = {1};
     cr_assert(max(test1, 1) == 0, "Singleton max");
 
@@ -14,7 +14,7 @@ Test(max_tests, all) {
     cr_assert(max(usual_case, arrsize(usual_case)) == 4, "Usual case");
 }
 
-Test(arrsize_tests, all) {
+Test(arrsize_tests, all){
     int size3[] = {1, 2, 3};
     cr_assert(arrsize(size3) == 3, "Happy arrsize");
 
@@ -22,7 +22,7 @@ Test(arrsize_tests, all) {
     cr_assert(arrsize(size0) == 0, "Zero length array");
 }
 
-Test(min_tests, all) {
+Test(min_tests, all){
     int test1[] = {1};
     cr_assert(min(test1, 1) == 0, "Singleton min");
 
@@ -33,7 +33,7 @@ Test(min_tests, all) {
     cr_assert(min(usual_case, arrsize(usual_case)) == 0, "Usual case");
 }
 
-Test(swap_test, all) {
+Test(swap_test, all){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
@@ -42,7 +42,7 @@ Test(swap_test, all) {
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 3, 4");
 }
 
-Test(swap_test_commutative, all) {
+Test(swap_test_commutative, all){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
@@ -58,4 +58,20 @@ Test(smart_swap, all){
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) != 0, "Pre-swap");
     safe_swap(usual_case, 4, 3);
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
+}
+
+Test(shift_limit, all){
+    int indices[] = {0, 1, 2, 3, 4, 5, 6};
+    int shift2limit[] = {0, 5, 6, 1, 2, 3, 4};
+}
+
+Test(shift_subarray, all){
+    int indices[] = {0, 1, 2, 3, 4, 5, 6};
+    int subshift[] = {0, 4, 5, 1, 2, 3, 6};
+    int caselimit = sizeof(indices);
+
+    cr_assert(sizeof(indices) == sizeof(subshift), "Sanity check");
+    cr_assert(memcmp(indices, subshift, caselimit) != 0, "Pre shift");
+    shift(indices, caselimit, 1, 4, 2);
+    cr_assert(memcmp(indices, subshift, caselimit) == 0, "Post shift");
 }

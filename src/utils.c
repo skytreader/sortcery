@@ -82,6 +82,22 @@ void safe_swap(int arr[], int i, int j){
     arr[j] = temp;
 }
 
+/**
+Shifts all elements in the subarray [i, shift_limit) by shift_count. The vacated
+cells will contain the misplaced elements.
+
+@param arr
+@param limit
+    The length of the array.
+@param i
+    The index of the first element of the subarray to be shifted.
+@param shift_limit
+@param shift_count
+*/
+void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
+    int displacement_count = limit - shift_limit;
+}
+
 void printarr(int arr[], int limit){
     int i;
     for(i = 0; i < limit; i++){
