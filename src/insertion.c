@@ -19,7 +19,7 @@ void insert(int arr[], int sorted_limit, int limit){
         exit(1);
     }
 
-    if(sorted_limit == limit){
+    if(sorted_limit >= (limit - 1)){
         return;
     }
     
@@ -27,7 +27,7 @@ void insert(int arr[], int sorted_limit, int limit){
     for(i = sorted_limit; i >= 0; i--){
         int move_candidate = arr[i + 1];
         if(move_candidate < arr[i]){
-            swap(arr, i, i + 1);
+            safe_swap(arr, i, i + 1, limit);
         } else{
             break;
         }
