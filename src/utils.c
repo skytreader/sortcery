@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "utils.h"
 
@@ -63,6 +64,9 @@ lighter on memory ever-so-slightly.
 @param j
 */
 void swap(int arr[], int i, int j){
+    if(i == j){
+        return;
+    }
     arr[i] += arr[j];
     arr[j] = arr[i] - arr[j];
     arr[i] -= arr[j];
@@ -75,8 +79,13 @@ done (TM).
 @param arr
 @param i
 @param j
+@param limit
 */
-void safe_swap(int arr[], int i, int j){
+void safe_swap(int arr[], int i, int j, int limit){
+    int max_index = limit - 1;
+    if(i > max_index || j > max_index){
+        exit(5);
+    }
     int temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
@@ -92,10 +101,29 @@ cells will contain the misplaced elements.
 @param i
     The index of the first element of the subarray to be shifted.
 @param shift_limit
+    Let j be the index of the last element to be shifted. Then shift_limit will
+    be j + 1.
 @param shift_count
+    The number of places to shift the elements. Hence after the operation, the
+    element at index i will be found at index i + shift_count.
 */
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
-    int displacement_count = limit - shift_limit;
+    int displacement_count = limit - shift_count;
+    int displacement_temp[displacement_count];
+    int shiftlength = shift_limit - i;
+    int j;
+
+    for(j = shift_limit; j < displacement_count; j++){
+        displacement_temp[j - shift_limit] = arr[j];
+    }
+
+    for(j = shiftlength - 1; j >= 0; j--){
+        arr[j] = arr[j + 1];
+    }
+
+    for(j = 0; j < displacement_count; j++){
+        arr[i + j] = displacement_temp[j];
+    }
 }
 
 void printarr(int arr[], int limit){

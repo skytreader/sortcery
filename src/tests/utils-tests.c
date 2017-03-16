@@ -51,18 +51,33 @@ Test(swap_test_commutative, all){
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
 }
 
+Test(swap_test_same, all){
+    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
+    int usual_case_clone[] = {1, 4, 1, 5, 9, 2, 6};
+
+    cr_assert(memcmp(usual_case, usual_case_clone, sizeof(usual_case)) == 0, "Pre-swap");
+    swap(usual_case, 0, 0);
+    cr_assert(memcmp(usual_case, usual_case_clone, sizeof(usual_case)) == 0, "Swap same index");
+}
+
 Test(smart_swap, all){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) != 0, "Pre-swap");
-    safe_swap(usual_case, 4, 3);
+    safe_swap(usual_case, 4, 3, arrsize(usual_case));
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
 }
 
 Test(shift_limit, all){
     int indices[] = {0, 1, 2, 3, 4, 5, 6};
     int shift2limit[] = {0, 5, 6, 1, 2, 3, 4};
+    int caselimit = sizeof(indices);
+
+    cr_assert(sizeof(indices) == sizeof(shift2limit), "Sanity check");
+    cr_assert(memcmp(indices, shift2limit, caselimit) != 0, "Pre shift");
+    shift(indices, caselimit, 1, 5, 2);
+    cr_assert(memcmp(indices, shift2limit, caselimit) == 0, "Post shift");
 }
 
 Test(shift_subarray, all){
