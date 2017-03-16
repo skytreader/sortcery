@@ -108,20 +108,22 @@ cells will contain the misplaced elements.
     element at index i will be found at index i + shift_count.
 */
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
-    int displacement_count = limit - shift_count;
-    int displacement_temp[displacement_count];
+    int displacement_temp[shift_count];
     int shiftlength = shift_limit - i;
     int j;
 
-    for(j = shift_limit; j < displacement_count; j++){
-        displacement_temp[j - shift_limit] = arr[j];
+    // Copy the elements that will be displaced.
+    for(j = 0; j < shift_count; j++){
+        displacement_temp[j] = arr[shiftlength + j + 1];
     }
 
-    for(j = shiftlength - 1; j >= 0; j--){
-        arr[j] = arr[j + 1];
+    // Shift the elements.
+    for(j = shiftlength; j >= 0; j--){
+        arr[j + shift_count] = arr[j];
     }
 
-    for(j = 0; j < displacement_count; j++){
+    // Fill in the "blanked" cells.
+    for(j = 0; j < shift_count; j++){
         arr[i + j] = displacement_temp[j];
     }
 }

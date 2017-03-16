@@ -2,7 +2,7 @@
 #include "../insertion.h"
 #include "../utils.h"
 
-Test(insert_tests_happy, all) {
+Test(insert_tests_happy, all){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int inserted[] = {1, 1, 4, 5, 9, 2, 6};
     int usual_case_size = sizeof(usual_case);
@@ -12,7 +12,7 @@ Test(insert_tests_happy, all) {
     cr_assert(memcmp(usual_case, inserted, usual_case_size) == 0, "insert works");
 }
 
-Test(limit_edge_tests1, all) {
+Test(limit_edge_tests1, all){
     /*
     I know this is not sorted but this also tests that the function treats its
     assumptions seriously.
@@ -26,7 +26,7 @@ Test(limit_edge_tests1, all) {
     cr_assert(memcmp(usual_case, cp_usual_case, usual_case_size) == 0, "insert respects assumptions");
 }
 
-Test(limit_edge_tests2, all) {
+Test(limit_edge_tests2, all){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int cp_usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int usual_case_size = sizeof(usual_case);
@@ -36,7 +36,7 @@ Test(limit_edge_tests2, all) {
     cr_assert(memcmp(usual_case, cp_usual_case, usual_case_size) == 0, "insert respects assumptions");
 }
 
-Test(insertion_sort, all) {
+Test(insertion_sort, all){
     int i;
     
     for(i = 0; i < 100; i++){

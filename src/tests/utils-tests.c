@@ -76,17 +76,17 @@ Test(shift_limit, all){
 
     cr_assert(sizeof(indices) == sizeof(shift2limit), "Sanity check");
     cr_assert(memcmp(indices, shift2limit, caselimit) != 0, "Pre shift");
-    shift(indices, caselimit, 1, 5, 2);
+    shift(indices, arrsize(indices), 1, 5, 2);
     cr_assert(memcmp(indices, shift2limit, caselimit) == 0, "Post shift");
 }
 
 Test(shift_subarray, all){
-    int indices[] = {0, 1, 2, 3, 4, 5, 6};
-    int subshift[] = {0, 4, 5, 1, 2, 3, 6};
+    int indices[] = {0, 1, 2, 3, 4, 5, 7};
+    int subshift[] = {0, 4, 5, 1, 2, 3, 7};
     int caselimit = sizeof(indices);
 
     cr_assert(sizeof(indices) == sizeof(subshift), "Sanity check");
     cr_assert(memcmp(indices, subshift, caselimit) != 0, "Pre shift");
-    shift(indices, caselimit, 1, 4, 2);
+    shift(indices, arrsize(indices), 1, 4, 2);
     cr_assert(memcmp(indices, subshift, caselimit) == 0, "Post shift");
 }
