@@ -11,7 +11,7 @@ ifeq ($(TEST), y)
 endif
 
 ifeq ($(DEBUG), y)
-    DEBUG_FLAGS = -c
+    DEBUG_FLAGS = -g
 endif
 
 ################################################################################
