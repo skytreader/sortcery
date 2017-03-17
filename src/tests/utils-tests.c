@@ -90,3 +90,14 @@ Test(shift_subarray, all){
     shift(indices, arrsize(indices), 1, 4, 2);
     cr_assert(memcmp(indices, subshift, caselimit) == 0, "Post shift");
 }
+
+Test(shift_beginning, all){
+    int indices[] = {0, 1, 2, 3, 4, 5, 8};
+    int startshift[] = {3, 4, 0, 1, 2, 5, 8};
+    int caselimit_bytes = sizeof(indices);
+
+    cr_assert(sizeof(indices) == sizeof(startshift), "Sanity check");
+    cr_assert(memcmp(indices, startshift, caselimit_bytes) != 0, "Pre shift");
+    shift(indices, arrsize(indices), 0, 3, 2);
+    cr_assert(memcmp(indices, startshift, caselimit_bytes) != 0, "Post shift");
+}
