@@ -112,19 +112,23 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
     int shiftlength = shift_limit - i;
     int j;
 
-    // Copy the elements that will be displaced.
-    for(j = 0; j < shift_count; j++){
-        displacement_temp[j] = arr[shiftlength + j + 1];
+    if(limit != shiftlength){
+        // Copy the elements that will be displaced.
+        for(j = 0; j < shift_count; j++){
+            displacement_temp[j] = arr[shiftlength + j + 1];
+        }
     }
 
     // Shift the elements.
     for(j = shiftlength; j >= 0; j--){
-        arr[j + shift_count] = arr[j];
+        arr[(j + shift_count) % limit] = arr[j];
     }
 
-    // Fill in the "blanked" cells.
-    for(j = 0; j < shift_count; j++){
-        arr[i + j] = displacement_temp[j];
+    if(limit != shiftlength){
+        // Fill in the "blanked" cells.
+        for(j = 0; j < shift_count; j++){
+            arr[i + j] = displacement_temp[j];
+        }
     }
 }
 
