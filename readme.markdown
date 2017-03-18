@@ -15,20 +15,18 @@ Install [Criterion](https://github.com/Snaipe/Criterion).
 
 # Compilation
 
-There are two compilation "modes": test and, uh, nontest. Test mode compiles
-with profiling flags that allow for coverage reporting. However, this adds code
-to the binaries which you may not want if you are, say, profiling performance.
+There are a couple of flags you can pass to `make` when compiling/building.
 
-To build in test mode just pass a `TEST=y` flag. That is,
+- `TEST` will compile with flags that allow test coverage reports.
+- `DEBUG` will compile with flags that allow for debugging with tools like
+`gdb`.
 
-    make TEST=y [target]
-
-Ommitting the flag will create a binary that is only the code in this
-repository.
+All these flags are optional. You may not want to use them if you are profiling
+for, say, performance.
 
 Note that if you modify some source files after a build and then make with a
 different flag, it is not guaranteed that your whole binary follows the flag of
 your most recent compilation. To prevent this, invoke make with the always build
 flag.
 
-    make -B [TEST=y] [target]
+    make -B [...flags...] [target]
