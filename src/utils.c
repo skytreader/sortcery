@@ -121,7 +121,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
 
     // Shift the elements.
     for(j = shiftlength; j >= 0; j--){
-        arr[(j + shift_count) % limit] = arr[j];
+        arr[(j + shift_count) % limit] = arr[j % limit];
     }
 
     if(limit != shiftlength){

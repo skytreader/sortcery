@@ -17,8 +17,8 @@ Install [Criterion](https://github.com/Snaipe/Criterion).
 
 There are a couple of flags you can pass to `make` when compiling/building.
 
-- `TEST` will compile with flags that allow test coverage reports.
-- `DEBUG` will compile with flags that allow for debugging with tools like
+- `TEST=y` will compile with flags that allow test coverage reports.
+- `DEBUG=y` will compile with flags that allow for debugging with tools like
 `gdb`.
 
 All these flags are optional. You may not want to use them if you are profiling
@@ -30,3 +30,29 @@ your most recent compilation. To prevent this, invoke make with the always build
 flag.
 
     make -B [...flags...] [target]
+
+# Quick Criterion reference
+
+This uses [Criterion](https://github.com/Snaipe/Criterion) for unit testing. The
+[docs](http://criterion.readthedocs.io/en/master/#) discuss the full range of
+Criterion's features but some common commands are found below.
+
+## Running a single test
+
+Assuming you have the following test:
+
+    Test(suite_name, test_name){}
+
+built into a binary named `test`. To execute only this test, do `test --filter
+suite_name/test_name`. Shell wildcard patterns can also be used.
+
+## Debugging
+
+Assuming the binary is made with the `DEBUG` flag, run the binary with the
+`--debug` option. This will start a debugging server. Then, in another terminal,
+connect to the server via `gdb -q ./testbinary`.
+
+In the resulting gdb session, target the server via `target remote
+localhost:1234`. You have to do this for _every_ test the binary is set to run.
+After doing this, you may issue debugging commands (`c` to start actual
+execution).
