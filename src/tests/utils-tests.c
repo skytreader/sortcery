@@ -33,7 +33,7 @@ Test(min_tests, all){
     cr_assert(min(usual_case, arrsize(usual_case)) == 0, "Usual case");
 }
 
-Test(swap_test, all){
+Test(swap_tests, common){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
@@ -42,7 +42,7 @@ Test(swap_test, all){
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 3, 4");
 }
 
-Test(swap_test_commutative, all){
+Test(swap_tests, commutative){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int swap_3_4[] = {1, 4, 1, 9, 5, 2, 6};
     
@@ -51,7 +51,7 @@ Test(swap_test_commutative, all){
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
 }
 
-Test(swap_test_same, all){
+Test(swap_tests, sameval){
     int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
     int usual_case_clone[] = {1, 4, 1, 5, 9, 2, 6};
 
@@ -69,7 +69,7 @@ Test(smart_swap, all){
     cr_assert(memcmp(usual_case, swap_3_4, sizeof(usual_case)) == 0, "Swap 4, 3");
 }
 
-Test(shift_limit, all){
+Test(shift_tests, limit){
     int indices[] = {0, 1, 2, 3, 4, 5, 6};
     int shift2limit[] = {0, 5, 6, 1, 2, 3, 4};
     int caselimit = sizeof(indices);
@@ -80,7 +80,7 @@ Test(shift_limit, all){
     cr_assert(memcmp(indices, shift2limit, caselimit) == 0, "Post shift");
 }
 
-Test(shift_subarray, all){
+Test(shift_tests, subarray){
     int indices[] = {0, 1, 2, 3, 4, 5, 7};
     int subshift[] = {0, 4, 5, 1, 2, 3, 7};
     int caselimit = sizeof(indices);
@@ -91,7 +91,7 @@ Test(shift_subarray, all){
     cr_assert(memcmp(indices, subshift, caselimit) == 0, "Post shift");
 }
 
-Test(shift_beginning, all){
+Test(shift_tests, beginning){
     int indices[] = {0, 1, 2, 3, 4, 5, 8};
     int startshift[] = {3, 4, 0, 1, 2, 5, 8};
     int caselimit_bytes = sizeof(indices);
@@ -102,7 +102,7 @@ Test(shift_beginning, all){
     cr_assert(memcmp(indices, startshift, caselimit_bytes) != 0, "Post shift");
 }
 
-Test(shift_all, all){
+Test(shift_tests, whole_array){
     int indices[] = {0, 1, 2, 3, 4, 5, 9};
     int wholeshift[] = {4, 5, 9, 0, 1, 2, 3};
     printf("before wholeshift is: ");
@@ -118,4 +118,16 @@ Test(shift_all, all){
     printf("wholeshift: ");
     printarr(wholeshift, caselimit_len);
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) == 0, "Post shift");
+}
+
+Test(shift_tests, whole_array_equivalent){
+    int indices[] = {0, 1, 2, 3, 4, 5, 9};
+    int wholeshift[] = {4, 5, 9, 0, 1, 2, 3};
+    int caselimit_bytes = sizeof(indices);
+    int caselimit_len = arrsize(indices);
+
+    cr_assert_eq(sizeof(indices), sizeof(wholeshift), "Sanity check");
+    cr_assert_neq(memcmp(indices, wholeshift, caselimit_bytes), 0, "Pre shift");
+    shift(indices, caselimit_len, 0, 4, 3);
+    cr_assert_eq(memcmp(indices, wholeshift, caselimit_bytes), 0, "Post shift");
 }
