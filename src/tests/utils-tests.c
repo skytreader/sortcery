@@ -99,7 +99,7 @@ Test(shift_tests, beginning){
     cr_assert(sizeof(indices) == sizeof(startshift), "Sanity check");
     cr_assert(memcmp(indices, startshift, caselimit_bytes) != 0, "Pre shift");
     shift(indices, arrsize(indices), 0, 3, 2);
-    cr_assert(memcmp(indices, startshift, caselimit_bytes) != 0, "Post shift");
+    cr_assert(memcmp(indices, startshift, caselimit_bytes) == 0, "Post shift");
 }
 
 Test(shift_tests, whole_array){
