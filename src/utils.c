@@ -113,11 +113,9 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
     int shift_temp[shiftlength];
     int j;
 
-    if(limit != shiftlength){
-        // Copy the elements that will be displaced unintentionally.
-        for(j = 0; j < shift_count; j++){
-            displacement_temp[j] = arr[shift_limit + j];
-        }
+    // Copy the elements that will be displaced unintentionally.
+    for(j = 0; j < shift_count; j++){
+        displacement_temp[j] = arr[shift_limit + j];
     }
 
     // Copy the elements to be shifted intentionally.
@@ -126,23 +124,13 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
     }
 
     // Shift the elements.
-    /*for(j = shiftlength; j >= 0; j--){
-        if(limit != shiftlength){
-            arr[(j + shift_count) % limit] = shift_temp[(j - 1) % limit];
-        } else{
-            arr[(j + shift_count) % limit] = shift_temp[j % limit];
-        }
-    }*/
-
     for(j = 0; j < shiftlength; j++){
         arr[j + i + shift_count] = shift_temp[j];
     }
 
-    if(limit != shiftlength){
-        // Fill in the "blanked" cells.
-        for(j = 0; j < shift_count; j++){
-            arr[i + j] = displacement_temp[j];
-        }
+    // Fill in the "blanked" cells.
+    for(j = 0; j < shift_count; j++){
+        arr[i + j] = displacement_temp[j];
     }
 }
 
