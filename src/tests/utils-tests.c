@@ -111,6 +111,8 @@ Test(shift_tests, whole_array){
     cr_assert(sizeof(indices) == sizeof(wholeshift), "Sanity check");
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) != 0, "Pre shift");
     shift(indices, caselimit_len, 0, caselimit_len, 3);
+    printf("whole_array postshift ");
+    printarr(indices, arrsize(indices));
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) == 0, "Post shift");
 }
 
