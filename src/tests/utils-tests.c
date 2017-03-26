@@ -105,18 +105,12 @@ Test(shift_tests, beginning){
 Test(shift_tests, whole_array){
     int indices[] = {0, 1, 2, 3, 4, 5, 9};
     int wholeshift[] = {4, 5, 9, 0, 1, 2, 3};
-    printf("before wholeshift is: ");
-    printarr(wholeshift, arrsize(wholeshift));
     int caselimit_bytes = sizeof(indices);
     int caselimit_len = arrsize(indices);
 
     cr_assert(sizeof(indices) == sizeof(wholeshift), "Sanity check");
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) != 0, "Pre shift");
     shift(indices, caselimit_len, 0, caselimit_len, 3);
-    printf("indices: ");
-    printarr(indices, caselimit_len);
-    printf("wholeshift: ");
-    printarr(wholeshift, caselimit_len);
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) == 0, "Post shift");
 }
 

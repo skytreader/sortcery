@@ -110,18 +110,24 @@ cells will contain the misplaced elements.
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
     int displacement_temp[shift_count];
     int shiftlength = shift_limit - i;
+    int shift_temp[shiftlength];
     int j;
 
     if(limit != shiftlength){
-        // Copy the elements that will be displaced.
+        // Copy the elements that will be displaced unintentionally.
         for(j = 0; j < shift_count; j++){
-            displacement_temp[j] = arr[shiftlength + j + 1];
+            displacement_temp[j] = arr[shift_limit + j];
         }
+    }
+
+    // Copy the elements to be shifted intentionally.
+    for(j = 0; j < shiftlength; j++){
+        shift_temp[j] = arr[i + j];
     }
 
     // Shift the elements.
     for(j = shiftlength; j >= 0; j--){
-        arr[(j + shift_count) % limit] = arr[j % limit];
+        arr[(j + shift_count) % limit] = shift_temp[j % limit];
     }
 
     if(limit != shiftlength){
