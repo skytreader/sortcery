@@ -108,33 +108,57 @@ cells will contain the misplaced elements.
     element at index i will be found at index i + shift_count.
 */
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
+    if(limit == shift_limit){
+        shift_limit = limit - shift_count;
+    }
+
     int displacement_temp[shift_count];
     int shiftlength = shift_limit - i;
     int shift_temp[shiftlength];
     int j;
 
-    if(limit == shift_limit){
-        shift_limit = limit - shift_count;
-    }
-
     // Copy the elements that will be displaced unintentionally.
     for(j = 0; j < shift_count; j++){
-        displacement_temp[j] = arr[shift_limit + j];
+        int translation = shift_limit + j;
+        if(translation < limit){
+            displacement_temp[j] = arr[shift_limit + j];
+        } else{
+            printf("out of bounds memory access!\n");
+            exit(1);
+        }
     }
 
     // Copy the elements to be shifted intentionally.
     for(j = 0; j < shiftlength; j++){
-        shift_temp[j] = arr[i + j];
+        int translation = i + j;
+        if(translation < limit){
+            shift_temp[j] = arr[i + j];
+        } else{
+            printf("out of bounds memory access!\n");
+            exit(1);
+        }
     }
 
     // Shift the elements.
     for(j = 0; j < shiftlength; j++){
-        arr[j + i + shift_count] = shift_temp[j];
+        int translation = j + i + shift_count;
+        if(translation < limit){
+            arr[j + i + shift_count] = shift_temp[j];
+        } else{
+            printf("out of bounds memory access!\n");
+            exit(1);
+        }
     }
 
     // Fill in the "blanked" cells.
     for(j = 0; j < shift_count; j++){
-        arr[i + j] = displacement_temp[j];
+        int translation = i + j;
+        if(translation < limit){
+            arr[i + j] = displacement_temp[j];
+        } else{
+            printf("out of bounds memory access!\n");
+            exit(1);
+        }
     }
 }
 
