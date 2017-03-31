@@ -113,6 +113,10 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
     int shift_temp[shiftlength];
     int j;
 
+    if(limit == shift_limit){
+        shift_limit = limit - shift_count;
+    }
+
     // Copy the elements that will be displaced unintentionally.
     for(j = 0; j < shift_count; j++){
         displacement_temp[j] = arr[shift_limit + j];

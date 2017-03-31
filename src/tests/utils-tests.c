@@ -113,6 +113,7 @@ Test(shift_tests, whole_array){
     shift(indices, caselimit_len, 0, caselimit_len, 3);
     printf("whole_array postshift ");
     printarr(indices, arrsize(indices));
+    printarr(wholeshift, arrsize(wholeshift));
     cr_assert(memcmp(indices, wholeshift, caselimit_bytes) == 0, "Post shift");
 }
 
