@@ -14,6 +14,7 @@ before_install:
     - pip install --user cpp-coveralls
     - mkdir build
     - gcc --version
+    - /usr/bin/gcc-5
 install: "make TEST=y all-tests"
 script: "./build/all-tests"
 after_success:
