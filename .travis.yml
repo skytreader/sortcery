@@ -13,8 +13,8 @@ before_install:
     - sudo apt-get -y install criterion-dev
     - pip install --user cpp-coveralls
     - mkdir build
+    - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
     - gcc --version
-    - /usr/bin/gcc-5
 install: "make TEST=y all-tests"
 script: "./build/all-tests"
 after_success:
