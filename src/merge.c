@@ -16,14 +16,15 @@ p2_limit) in the provided array.
 @param p2_origin
 @param p2_limit
 */
-void merge(int[] arr, int p1_origin, int p2_origin, int p2_limit){
+void merge(int[] arr, int limit, int p1_origin, int p2_origin, int p2_limit){
     int i = p1_origin;
     int j = p2_origin;
     
     while(i < p2_origin && j < p2_limit){
-        if(arr[i] < arr[j]){
+        if(arr[i] <= arr[j]){
             i++;
         } else if(arr[i] > arr[j]){
+            shift(arr, limit, i, p2_origin, 1);
         }
     }
 }
