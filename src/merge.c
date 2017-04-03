@@ -1,3 +1,4 @@
+#include "merge.h"
 #include "utils.h"
 
 /**
@@ -16,7 +17,7 @@ p2_limit) in the provided array.
 @param p2_origin
 @param p2_limit
 */
-void merge(int[] arr, int limit, int p1_origin, int p2_origin, int p2_limit){
+void merge(int arr[], int limit, int p1_origin, int p2_origin, int p2_limit){
     int i = p1_origin;
     int j = p2_origin;
     

@@ -14,6 +14,8 @@ ifeq ($(DEBUG), y)
     DEBUG_FLAGS = -g 
 endif
 
+DEFAULT_FLAGS = -fstack-protector-strong
+
 ################################################################################
 # Unit test executables.
 ################################################################################
@@ -30,6 +32,9 @@ insertion-tests: insertion-tests.o insertion.o utils.o
 bubble-tests: bubble-tests.o bubble.o utils.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/bubble-tests build/bubble-tests.o build/bubble.o build/utils.o -lcriterion
 
+merge-tests: merge-tests.o merge.o utils.o
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/merge-tests build/merge-tests.o build/merge.o build/utils.o -lcriterion
+
 ################################################################################
 # These are the object files for the actual algorithms and functions in this
 # repository.
@@ -43,6 +48,9 @@ insertion.o: src/insertion.c src/insertion.h src/utils.h
 bubble.o: src/bubble.c src/bubble.h src/utils.h
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -c src/bubble.c -o build/bubble.o
 
+merge.o: src/merge.c src/merge.h src/utils.h
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/merge.c -o build/merge.o
+
 ################################################################################
 # Individual object files for per-module unittests.
 ################################################################################
@@ -55,3 +63,6 @@ insertion-tests.o: src/tests/insertion-tests.c
 
 bubble-tests.o: src/tests/bubble-tests.c
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -c src/tests/bubble-tests.c -o build/bubble-tests.o
+
+merge-tests.o: src/tests/merge-tests.c
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/merge-tests.c -o build/merge-tests.o
