@@ -21,11 +21,12 @@ void merge(int arr[], int limit, int p1_origin, int p2_origin, int p2_limit){
     int i = p1_origin;
     int j = p2_origin;
     
-    while(i < p2_origin && j < p2_limit){
+    while(i < p2_limit && j < p2_limit){
         if(arr[i] <= arr[j]){
             i++;
         } else if(arr[i] > arr[j]){
-            shift(arr, limit, i, p2_origin, 1);
+            shift(arr, limit, i, j, 1);
+            j++;
         }
     }
 }
