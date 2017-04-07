@@ -48,3 +48,15 @@ Test(merge_tests, same_elements_no_movement){
     merge(test, testlimit, 0, 3, 6);
     cr_assert_eq(memcmp(test, expected, testlimit_bytes), 0, "Post-call check");
 }
+
+Test(mergesort_tests, even){
+    int test[] = {1, 4, 1, 5, 9, 2};
+    int expected[] = {1, 1, 2, 4, 5, 9};
+    int testlimit = arrsize(test);
+    int testlimit_bytes = sizeof(test);
+
+    cr_assert_eq(arrsize(test), arrsize(expected), "Sanity check");
+    cr_assert_neq(memcmp(test, expected, testlimit_bytes), 0, "Pre-call check");
+    mergesort(test, testlimit);
+    cr_assert_eq(memcmp(test, expected, testlimit_bytes), 0, "Post-call check");
+}
