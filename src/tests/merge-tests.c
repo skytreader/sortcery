@@ -72,3 +72,27 @@ Test(mergesort_tests, even){
     mergesort(test, testlimit);
     cr_assert_eq(memcmp(test, expected, testlimit_bytes), 0, "Post-call check");
 }
+
+Test(mergesort_tests, odd){
+    int test[] = {1, 4, 1, 9, 2};
+    int expected[] = {1, 1, 2, 4, 9};
+    int testlimit = arrsize(test);
+    int testlimit_bytes = sizeof(test);
+
+    cr_assert_eq(arrsize(test), arrsize(expected), "Sanity check");
+    cr_assert_neq(memcmp(test, expected, testlimit_bytes), 0, "Pre-call check");
+    mergesort(test, testlimit);
+    cr_assert_eq(memcmp(test, expected, testlimit_bytes), 0, "Post-call check");
+}
+
+Test(mergesort_tests, power_two){
+    int test[] = {1, 4, 1, 9};
+    int expected[] = {1, 1, 4, 9};
+    int testlimit = arrsize(test);
+    int testlimit_bytes = sizeof(test);
+
+    cr_assert_eq(arrsize(test), arrsize(expected), "Sanity check");
+    cr_assert_neq(memcmp(test, expected, testlimit_bytes), 0, "Pre-call check");
+    mergesort(test, testlimit);
+    cr_assert_eq(memcmp(test, expected, testlimit_bytes), 0, "Post-call check");
+}
