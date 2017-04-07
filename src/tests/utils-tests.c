@@ -21,6 +21,11 @@ Test(arrsize_tests, all){
     cr_assert(arrsize(size0) == 0, "Zero length array");
 }
 
+Test(logb_tests, all){
+    // With thanks to Python 3
+    cr_assert_float_eq(logb(6, 2), 2.584962500721156, 0.0000001, "log test");
+}
+
 Test(min_tests, all){
     int test1[] = {1};
     cr_assert(min(test1, 1) == 0, "Singleton min");

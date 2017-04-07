@@ -1,4 +1,7 @@
+#include <math.h>
+
 #define arrsize(arr) sizeof(arr) / sizeof(arr[0])
+#define logb(a, base) log(a) / log(base)
 
 int max(int arr[], int limit);
 int min(int arr[], int limit);
