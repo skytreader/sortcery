@@ -38,14 +38,21 @@ void mergesort(int arr[], int limit){
 
     while(skip <= skip_limit){
         int i;
-        int last_p1 = limit - skip;
+        int last_p1 = limit - skip + 1;
         printf("skip is %d\n", skip);
         for(i = 0; i < last_p1;){
             int p2_origin = i + skip;
             int p2_limit = p2_origin + skip;
-            merge(arr, limit, i, p2_origin, p2_origin + skip);
+            
+            if(p2_limit > limit){
+                p2_limit = limit;
+            }
+
+            printf("i %d p2o %d p2l %d\n", i, p2_origin, p2_limit);
+            merge(arr, limit, i, p2_origin, p2_limit);
             i = p2_limit;
         }
-        skip++;
+        printarr(arr, limit);
+        skip *= 2;
     }
 }
