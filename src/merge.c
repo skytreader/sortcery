@@ -30,3 +30,17 @@ void merge(int arr[], int limit, int p1_origin, int p2_origin, int p2_limit){
         }
     }
 }
+
+void mergesort(int arr[], int limit){
+    int skip_limit = limit / 2;
+    int skip = 1;
+
+    while(skip < skip_limit){
+        int i;
+        int last_p1 = limit -skip;
+        for(i = 0; i < last_p1; i++){
+            int p2_origin = i + skip;
+            merge(arr, limit, i, p2_origin, p2_origin + skip);
+        }
+    }
+}
