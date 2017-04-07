@@ -21,19 +21,19 @@ DEFAULT_FLAGS = -fstack-protector-strong
 ################################################################################
 
 all-tests: utils-tests.o utils.o insertion-tests.o insertion.o bubble-tests.o bubble.o merge-tests.o merge.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o build/bubble-tests.o build/bubble.o build/merge-tests.o build/merge.o -lcriterion
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o build/bubble-tests.o build/bubble.o build/merge-tests.o build/merge.o -lcriterion -lm
 
 utils-tests: utils-tests.o utils.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/utils-tests build/utils.o build/utils-tests.o -lcriterion
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/utils-tests build/utils.o build/utils-tests.o -lcriterion -lm
 
 insertion-tests: insertion-tests.o insertion.o utils.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/insertion-tests build/insertion-tests.o build/insertion.o build/utils.o -lcriterion
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/insertion-tests build/insertion-tests.o build/insertion.o build/utils.o -lcriterion -lm
 
 bubble-tests: bubble-tests.o bubble.o utils.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/bubble-tests build/bubble-tests.o build/bubble.o build/utils.o -lcriterion
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)-fstack-protector-strong -o build/bubble-tests build/bubble-tests.o build/bubble.o build/utils.o -lcriterion -lm
 
 merge-tests: merge-tests.o merge.o utils.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/merge-tests build/merge-tests.o build/merge.o build/utils.o -lcriterion
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/merge-tests build/merge-tests.o build/merge.o build/utils.o -lcriterion -lm
 
 ################################################################################
 # These are the object files for the actual algorithms and functions in this

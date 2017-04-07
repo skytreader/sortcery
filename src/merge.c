@@ -1,6 +1,8 @@
+#include <math.h>
+#include <stdio.h>
+
 #include "merge.h"
 #include "utils.h"
-#include <stdio.h>
 
 /**
 Assuming that the subarrays described by the index ranges
@@ -33,7 +35,7 @@ void merge(int arr[], int limit, int p1_origin, int p2_origin, int p2_limit){
 }
 
 void mergesort(int arr[], int limit){
-    int skip_limit = limit / 2;
+    int skip_limit = ceil(logb(limit, 2));
     int skip = 1;
 
     while(skip <= skip_limit){
