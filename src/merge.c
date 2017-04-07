@@ -35,7 +35,8 @@ void merge(int arr[], int limit, int p1_origin, int p2_origin, int p2_limit){
 }
 
 void mergesort(int arr[], int limit){
-    int skip_limit = ceil(logb(limit, 2));
+    int skip_limit = ceil(logb(limit, 2)) + 1;
+    printf("skip limit is %d\n", skip_limit);
     int skip = 1;
 
     while(skip <= skip_limit){
