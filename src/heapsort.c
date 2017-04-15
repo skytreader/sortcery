@@ -24,5 +24,31 @@ void heapify(int n[], int limit){
     }
 }
 
+/**
+This function is the key to making the heap and the queue co-exist in the same
+space of allocated memory. Every call to this function will take the root of the
+heap and put it at the tail of the queue.
+
+@param n
+@param limit
+    The actual number of elements inthe allocated memory (size of the array n).
+*/
+void heapsort_shift(int n[], int limit){
+    int root_holder = n[0];
+    int i;
+
+    for(i = 1; i < limit; i++){
+        safe_swap(n, i, i - 1, limit);
+    }
+
+    n[limit - 1] = root_holder;
+}
+
 void heapsort(int n[], int limit){
+    int i;
+
+    for(i = 0; i < limit; i++){
+        heapify(n, limit - i);
+        heapsort_shift(n, limit);
+    }
 }
