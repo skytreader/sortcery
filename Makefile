@@ -15,6 +15,7 @@ ifeq ($(DEBUG), y)
 endif
 
 DEFAULT_FLAGS = -fstack-protector-strong
+END_FLAGS = -lcriterion -lm
 
 ################################################################################
 # Unit test executables.
@@ -35,6 +36,9 @@ bubble-tests: bubble-tests.o bubble.o utils.o
 merge-tests: merge-tests.o merge.o utils.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/merge-tests build/merge-tests.o build/merge.o build/utils.o -lcriterion -lm
 
+heapsort-tests: heapsort-tests.o heapsort.o utils.o
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/heapsort-tests build/heapsort-tests.o build/heapsort.o build/utils.o $(END_FLAGS)
+
 ################################################################################
 # These are the object files for the actual algorithms and functions in this
 # repository.
@@ -51,6 +55,9 @@ bubble.o: src/bubble.c src/bubble.h src/utils.h
 merge.o: src/merge.c src/merge.h src/utils.h
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/merge.c -o build/merge.o
 
+heapsort.o: src/heapsort.c src/heapsort.h src/utils.h
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/heapsort.c -o build/heapsort.o
+
 ################################################################################
 # Individual object files for per-module unittests.
 ################################################################################
@@ -66,3 +73,6 @@ bubble-tests.o: src/tests/bubble-tests.c
 
 merge-tests.o: src/tests/merge-tests.c
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/merge-tests.c -o build/merge-tests.o
+
+heapsort-tests.o: src/tests/heapsort-tests.c
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/heapsort-tests.c -o build/heapsort-tests.o

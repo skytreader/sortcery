@@ -8,11 +8,23 @@ respectively.
 */
 
 void heapify(int n[], int limit){
-    int lastnode = limit - 1;
-    int is_rson = (lastnode % 2) == 0;
-    int i = lastnode;
+    // Get the father of the lastnode.
+    int i = limit / 2;
 
     while(i >= 0){
-        i -= 1;
+        int minson = (2 * i) + 1;
+        int rson = (2 * i) + 2;
+        if(rson < limit && n[minson] < n[(2 * i) + 2]){
+            minson = (2 * i) + 2;
+        }
+
+        if(n[minson] < n[i]){
+            safe_swap(n, minson, i, limit);
+        }
+
+        i--;
     }
+}
+
+void heapsort(int n[], int limit){
 }
