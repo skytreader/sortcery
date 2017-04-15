@@ -9,21 +9,18 @@ respectively.
 */
 
 void heapify(int n[], int limit){
-    // Get the father of the lastnode.
-    int i = (limit / 2) - 1;
+    int i;
 
-    while(i >= 0){
+    for(i = 0; i < limit; i++){
         int minson = (2 * i) + 1;
         int rson = (2 * i) + 2;
         if(rson < limit && n[minson] > n[rson]){
             minson = rson;
         }
 
-        if(n[minson] < n[i]){
+        if(minson < limit && n[minson] < n[i]){
             safe_swap(n, minson, i, limit);
         }
-
-        i--;
     }
 }
 
