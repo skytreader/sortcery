@@ -58,6 +58,9 @@ merge.o: src/merge.c src/merge.h src/utils.h
 heapsort.o: src/heapsort.c src/heapsort.h src/utils.h
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/heapsort.c -o build/heapsort.o
 
+bstree.o: src/bstree.h src/bstree.c
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/bstree.c -o build/bstree.o
+
 ################################################################################
 # Individual object files for per-module unittests.
 ################################################################################
