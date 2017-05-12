@@ -39,6 +39,9 @@ merge-tests: merge-tests.o merge.o utils.o
 heapsort-tests: heapsort-tests.o heapsort.o utils.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/heapsort-tests build/heapsort-tests.o build/heapsort.o build/utils.o $(END_FLAGS)
 
+bstree-tests: bstree-tests.o bstree.o
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/bstree-tests build/bstree-tests.o build/bstree.o $(END_FLAGS)
+
 ################################################################################
 # These are the object files for the actual algorithms and functions in this
 # repository.
@@ -79,3 +82,6 @@ merge-tests.o: src/tests/merge-tests.c
 
 heapsort-tests.o: src/tests/heapsort-tests.c
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/heapsort-tests.c -o build/heapsort-tests.o
+
+bstree-tests.o: src/tests/bstree-tests.c
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/bstree-tests.c -o build/bstree-tests.o
