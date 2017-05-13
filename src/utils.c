@@ -173,6 +173,7 @@ void printarr(int arr[], int limit){
 void init_stack(stack *s, int size){
     (*s).stack = (int*) malloc(sizeof(int) * size);
     (*s).size = size;
+    s->head = 0;
 }
 
 int pop(stack *s){
