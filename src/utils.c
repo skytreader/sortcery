@@ -171,8 +171,7 @@ void printarr(int arr[], int limit){
 }
 
 void init_stack(stack *s, int size){
-    static int stack[size];
-    (*s).stack = stack;
+    (*s).stack = (int*) malloc(sizeof(int) * size);
     (*s).size = size;
 }
 
