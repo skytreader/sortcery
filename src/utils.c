@@ -169,3 +169,16 @@ void printarr(int arr[], int limit){
     }
     printf("\n");
 }
+
+void init_stack(stack *s, int size){
+    static int stack[size];
+    s.stack = stack;
+    s.size = size;
+}
+
+int pop(stack *s){
+    return 0;
+}
+
+void push(stack *s, int d){
+}
