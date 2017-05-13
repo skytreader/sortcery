@@ -172,8 +172,8 @@ void printarr(int arr[], int limit){
 
 void init_stack(stack *s, int size){
     static int stack[size];
-    s.stack = stack;
-    s.size = size;
+    (*s).stack = stack;
+    (*s).size = size;
 }
 
 int pop(stack *s){
