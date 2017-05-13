@@ -129,3 +129,11 @@ Test(shift_tests, whole_array_equivalent){
     shift(indices, caselimit_len, 0, 4, 3);
     cr_assert_eq(memcmp(indices, wholeshift, caselimit_bytes), 0, "Post shift");
 }
+
+Test(stack_tests, init){
+    int stack_size = 3;
+    stack s;
+    cr_assert_neq(s.size, stack_size, "Initial declaration of stack is sizeless.");
+    init_stack(&s, 3);
+    cr_assert_eq(s.size, stack_size, "Post init, s has size.");
+}
