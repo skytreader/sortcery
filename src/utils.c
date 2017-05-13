@@ -84,7 +84,7 @@ done (TM).
 void safe_swap(int arr[], int i, int j, int limit){
     int max_index = limit - 1;
     if(i > max_index || j > max_index){
-        exit(5);
+        exit(INVALID_STATE_EXT);
     }
     int temp = arr[i];
     arr[i] = arr[j];
@@ -124,7 +124,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
             displacement_temp[j] = arr[shift_limit + j];
         } else{
             printf("out of bounds memory access!\n");
-            exit(1);
+            exit(OUT_OF_BOUNDS_MEM_EXT);
         }
     }
 
@@ -135,7 +135,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
             shift_temp[j] = arr[i + j];
         } else{
             printf("out of bounds memory access!\n");
-            exit(1);
+            exit(OUT_OF_BOUNDS_MEM_EXT);
         }
     }
 
@@ -146,7 +146,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
             arr[j + i + shift_count] = shift_temp[j];
         } else{
             printf("out of bounds memory access!\n");
-            exit(1);
+            exit(OUT_OF_BOUNDS_MEM_EXT);
         }
     }
 
@@ -157,7 +157,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count){
             arr[i + j] = displacement_temp[j];
         } else{
             printf("out of bounds memory access!\n");
-            exit(1);
+            exit(OUT_OF_BOUNDS_MEM_EXT);
         }
     }
 }
@@ -176,9 +176,30 @@ void init_stack(stack *s, int size){
     s->head = 0;
 }
 
+/**
+This does not delete the item in memory (i.e., an item that is "popped" can
+still be accessed via s->stack[s->head + 1] outside of the stack functions. This
+is a possible issue!
+
+However (this does not matter much while we are returning primitives), this
+ensures that the data returned is _the_ object, not some copy. If we overwrite
+the stack data immediately, we would corrupt objects that are passed to the
+stack.
+*/
 int pop(stack *s){
-    return 0;
+    if(s->head == 0){
+        printf("popping from an empty stack.\n");
+        exit(INVALID_STATE_EXT);
+    }
+    s->head--;
+    return s->stack[s->head];
 }
 
 void push(stack *s, int d){
+    if(s->head == (s->size - 1)){
+        printf("pushing to a full stack.\n");
+        exit(OUT_OF_BOUNDS_MEM_EXT);
+    }
+    s->stack[s->head] = d;
+    s->head++;
 }

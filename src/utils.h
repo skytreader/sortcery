@@ -1,5 +1,11 @@
 #include <math.h>
 
+/*
+Define exit codes here. Keep them sorted alphabetically.
+*/
+#define INVALID_STATE_EXT 5
+#define OUT_OF_BOUNDS_MEM_EXT 1
+
 #define arrsize(arr) sizeof(arr) / sizeof(arr[0])
 #define logb(a, base) log(a) / log(base)
 
