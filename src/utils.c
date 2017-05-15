@@ -3,6 +3,8 @@
 
 #include "utils.h"
 
+//define_max(double);
+
 /**
 Returns the index of the greatest element in the array. In case of ties, the
 first occurrence of the greatest element is returned.

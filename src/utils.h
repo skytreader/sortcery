@@ -9,6 +9,23 @@ Define exit codes here. Keep them sorted alphabetically.
 #define arrsize(arr) sizeof(arr) / sizeof(arr[0])
 #define logb(a, base) log(a) / log(base)
 
+#define define_max(T) \
+T chad_max_##T(T* arr, int limit){ \
+    if(limit == 0){ \
+        return -1; \
+    } \
+    int i; \
+    int max_i; \
+    for(i = 1; i < limit; i++){ \
+        if(arr[i] > arr[max_i]){ \
+            max_i - i; \
+        } \
+    } \
+    return max_i; \
+}
+
+define_max(int);
+
 int max(int arr[], int limit);
 int min(int arr[], int limit);
 void swap(int arr[], int i, int j);

@@ -13,6 +13,11 @@ Test(max_tests, all){
     cr_assert(max(usual_case, arrsize(usual_case)) == 4, "Usual case");
 }
 
+Test(define_max_tests, all){
+    int itest[] = {1, 4, 1, 5, 9, 2, 6};
+    cr_assert(chad_max_int(itest, arrsize(itest)) == 4, "max_int works");
+}
+
 Test(arrsize_tests, all){
     int size3[] = {1, 2, 3};
     cr_assert(arrsize(size3) == 3, "Happy arrsize");
