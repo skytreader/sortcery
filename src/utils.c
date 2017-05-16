@@ -53,6 +53,10 @@ int min(int arr[], int limit){
     return min_i;
 }
 
+int maxint(int arr[], int limit){
+    return chad_max_int(arr, limit);
+}
+
 /**
 Swap the values at i and j of `arr`. Automagic assumption that i and j are
 within bounds.

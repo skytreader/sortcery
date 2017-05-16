@@ -27,6 +27,7 @@ T chad_max_##T(T* arr, int limit){ \
 
 int max(int arr[], int limit);
 int min(int arr[], int limit);
+int maxint(int arr[], int limit);
 void swap(int arr[], int i, int j);
 void safe_swap(int arr[], int i, int j, int limit);
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count);
