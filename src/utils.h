@@ -15,16 +15,15 @@ T chad_max_##T(T* arr, int limit){ \
         return -1; \
     } \
     int i; \
-    int max_i; \
+    int max_i = 0; \
     for(i = 1; i < limit; i++){ \
         if(arr[i] > arr[max_i]){ \
-            max_i - i; \
+            max_i = i; \
         } \
     } \
     return max_i; \
 }
 
-define_max(int);
 
 int max(int arr[], int limit);
 int min(int arr[], int limit);
