@@ -4,6 +4,8 @@
 #include "utils.h"
 
 define_max(int)
+define_max(float)
+define_max(double)
 
 /**
 Returns the index of the greatest element in the array. In case of ties, the
@@ -54,7 +56,15 @@ int min(int arr[], int limit){
 }
 
 int maxint(int arr[], int limit){
-    return chad_max_int(arr, limit);
+    return max_int(arr, limit);
+}
+
+int maxfloat(float arr[], int limit){
+    return max_float(arr, limit);
+}
+
+int maxdouble(double arr[], int limit){
+    return max_double(arr, limit);
 }
 
 /**

@@ -13,9 +13,19 @@ Test(max_tests, all){
     cr_assert(max(usual_case, arrsize(usual_case)) == 4, "Usual case");
 }
 
-Test(define_max_tests, all){
+Test(define_max_tests, ints){
     int itest[] = {1, 4, 1, 5, 9, 2, 6};
     cr_assert_eq(maxint(itest, arrsize(itest)), 4, "max_int works");
+}
+
+Test(define_max_tests, floats){
+    float itest[] = {1.0f, 4.0f, 1.0f, 5.0f, 9.0f, 2.0f, 6.0f};
+    cr_assert_eq(maxfloat(itest, arrsize(itest)), 4, "max_float works");
+}
+
+Test(define_max_tests, doubles){
+    double itest[] = {1.0, 4.0, 1.0, 5.0, 9.0, 2.0, 6.0};
+    cr_assert_eq(maxdouble(itest, arrsize(itest)), 4, "max_double works");
 }
 
 Test(arrsize_tests, all){

@@ -10,7 +10,7 @@ Define exit codes here. Keep them sorted alphabetically.
 #define logb(a, base) log(a) / log(base)
 
 #define define_max(T) \
-T chad_max_##T(T* arr, int limit){ \
+T max_##T(T* arr, int limit){ \
     if(limit == 0){ \
         return -1; \
     } \
@@ -28,6 +28,8 @@ T chad_max_##T(T* arr, int limit){ \
 int max(int arr[], int limit);
 int min(int arr[], int limit);
 int maxint(int arr[], int limit);
+int maxfloat(float arr[], int limit);
+int maxdouble(double arr[], int limit);
 void swap(int arr[], int i, int j);
 void safe_swap(int arr[], int i, int j, int limit);
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count);
