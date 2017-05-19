@@ -2,17 +2,6 @@
 
 #include "../utils.h"
 
-Test(max_tests, all){
-    int test1[] = {1};
-    cr_assert(max(test1, 1) == 0, "Singleton max");
-
-    int test_none[0];
-    cr_assert(max(test_none, arrsize(test_none)) < 0, "Zero length array");
-
-    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
-    cr_assert(max(usual_case, arrsize(usual_case)) == 4, "Usual case");
-}
-
 Test(define_max_tests, ints){
     int itest[] = {1, 4, 1, 5, 9, 2, 6};
     cr_assert_eq(maxint(itest, arrsize(itest)), 4, "maxint works");
@@ -54,17 +43,6 @@ Test(arrsize_tests, all){
 Test(logb_tests, all){
     // With thanks to Python 3
     cr_assert_float_eq(logb(6, 2), 2.584962500721156, 0.0000001, "log test");
-}
-
-Test(min_tests, all){
-    int test1[] = {1};
-    cr_assert(min(test1, 1) == 0, "Singleton min");
-
-    int test_none[0];
-    cr_assert(min(test_none, arrsize(test_none)) < 0, "Zero length array");
-
-    int usual_case[] = {1, 4, 1, 5, 9, 2, 6};
-    cr_assert(min(usual_case, arrsize(usual_case)) == 0, "Usual case");
 }
 
 Test(swap_tests, common){

@@ -40,8 +40,6 @@ T template_min_##T(T* arr, int limit){ \
 }
 
 
-int max(int arr[], int limit);
-int min(int arr[], int limit);
 int maxint(int arr[], int limit);
 int maxfloat(float arr[], int limit);
 int maxdouble(double arr[], int limit);
