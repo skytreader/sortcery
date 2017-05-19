@@ -36,9 +36,17 @@ int* traverse_inorder(btree bt, int inorder[]){
     memset(rvisited, false, bt.node_count * sizeof(bool));
     int inorder_idx = 0;
     btree *roamer = &bt;
+    stack s;
+    init_stack(&s, bt.node_count);
 
     while(inorder_idx != bt.node_count){
         if(roamer->lchild == NULL){
+            // Visit self
+            inorder[inorder_idx] = roamer->data;
+            inorder_idx++;
+            roamer = roamer->rchild;
+        } else{
+            roamer = roamer->lchild;
         }
     }
 
