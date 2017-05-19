@@ -10,7 +10,7 @@ Define exit codes here. Keep them sorted alphabetically.
 #define logb(a, base) log(a) / log(base)
 
 #define define_max(T) \
-T max_##T(T* arr, int limit){ \
+T template_max_##T(T* arr, int limit){ \
     if(limit == 0){ \
         return -1; \
     } \

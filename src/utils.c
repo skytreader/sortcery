@@ -56,15 +56,15 @@ int min(int arr[], int limit){
 }
 
 int maxint(int arr[], int limit){
-    return max_int(arr, limit);
+    return template_max_int(arr, limit);
 }
 
 int maxfloat(float arr[], int limit){
-    return max_float(arr, limit);
+    return template_max_float(arr, limit);
 }
 
 int maxdouble(double arr[], int limit){
-    return max_double(arr, limit);
+    return template_max_double(arr, limit);
 }
 
 /**
