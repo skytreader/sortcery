@@ -6,6 +6,9 @@
 define_max(int)
 define_max(float)
 define_max(double)
+define_min(int)
+define_min(float)
+define_min(double)
 
 /**
 Returns the index of the greatest element in the array. In case of ties, the
@@ -65,6 +68,18 @@ int maxfloat(float arr[], int limit){
 
 int maxdouble(double arr[], int limit){
     return template_max_double(arr, limit);
+}
+
+int minint(int arr[], int limit){
+    return template_min_int(arr, limit);
+}
+
+int minfloat(float arr[], int limit){
+    return template_min_float(arr, limit);
+}
+
+int mindouble(double arr[], int limit){
+    return template_min_double(arr, limit);
 }
 
 /**

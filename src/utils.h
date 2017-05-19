@@ -24,12 +24,30 @@ T template_max_##T(T* arr, int limit){ \
     return max_i; \
 }
 
+#define define_min(T) \
+T template_min_##T(T* arr, int limit){ \
+    if(limit == 0){ \
+        return -1; \
+    } \
+    int i; \
+    int min_i = 0; \
+    for(i = 1; i < limit; i++){ \
+        if(arr[i] < arr[min_i]){ \
+            min_i = i; \
+        } \
+    } \
+    return min_i; \
+}
+
 
 int max(int arr[], int limit);
 int min(int arr[], int limit);
 int maxint(int arr[], int limit);
 int maxfloat(float arr[], int limit);
 int maxdouble(double arr[], int limit);
+int minint(int arr[], int limit);
+int minfloat(float arr[], int limit);
+int mindouble(double arr[], int limit);
 void swap(int arr[], int i, int j);
 void safe_swap(int arr[], int i, int j, int limit);
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count);
