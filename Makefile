@@ -23,7 +23,11 @@ END_FLAGS = -lcriterion -lm
 
 all-tests: utils-tests.o utils.o insertion-tests.o insertion.o bubble-tests.o bubble.o merge-tests.o merge.o heapsort-tests.o heapsort.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o build/bubble-tests.o build/bubble.o build/merge-tests.o build/merge.o build/heapsort-tests.o build/heapsort.o $(END_FLAGS)
-
+#
+#%-tests: %-tests.o %.o
+#	cd build
+#	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o $@ $^ $(END_FLAGS)
+#
 utils-tests: utils-tests.o utils.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/utils-tests build/utils.o build/utils-tests.o $(END_FLAGS)
 
@@ -46,23 +50,9 @@ bstree-tests: bstree-tests.o bstree.o
 # These are the object files for the actual algorithms and functions in this
 # repository.
 ################################################################################
-utils.o: src/utils.c src/utils.h
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/utils.c -o build/utils.o
 
-insertion.o: src/insertion.c src/insertion.h src/utils.h
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/insertion.c -o build/insertion.o
-
-bubble.o: src/bubble.c src/bubble.h src/utils.h
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/bubble.c -o build/bubble.o
-
-merge.o: src/merge.c src/merge.h src/utils.h
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/merge.c -o build/merge.o
-
-heapsort.o: src/heapsort.c src/heapsort.h src/utils.h
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/heapsort.c -o build/heapsort.o
-
-bstree.o: src/bstree.h src/bstree.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/bstree.c -o build/bstree.o
+%.o: src/%.c src/%.h
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/$*.c -o build/$@
 
 ################################################################################
 # Individual object files for per-module unittests.
