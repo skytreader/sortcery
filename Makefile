@@ -22,7 +22,8 @@ END_FLAGS = -lcriterion -lm
 ################################################################################
 
 all-tests: utils-tests.o utils.o insertion-tests.o insertion.o bubble-tests.o bubble.o merge-tests.o merge.o heapsort-tests.o heapsort.o
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/all-tests build/utils.o build/utils-tests.o build/insertion.o build/insertion-tests.o build/bubble-tests.o build/bubble.o build/merge-tests.o build/merge.o build/heapsort-tests.o build/heapsort.o $(END_FLAGS)
+	cd build && \
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o $@ $^ $(END_FLAGS)
 
 utils-tests: utils-tests.o utils.o
 	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -o build/utils-tests build/utils.o build/utils-tests.o $(END_FLAGS)
