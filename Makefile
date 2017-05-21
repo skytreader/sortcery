@@ -58,20 +58,5 @@ bstree-tests: bstree-tests.o bstree.o
 # Individual object files for per-module unittests.
 ################################################################################
 
-utils-tests.o: src/tests/utils-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/utils-tests.c -o build/utils-tests.o
-
-insertion-tests.o: src/tests/insertion-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/insertion-tests.c -o build/insertion-tests.o
-
-bubble-tests.o: src/tests/bubble-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/bubble-tests.c -o build/bubble-tests.o
-
-merge-tests.o: src/tests/merge-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/merge-tests.c -o build/merge-tests.o
-
-heapsort-tests.o: src/tests/heapsort-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/heapsort-tests.c -o build/heapsort-tests.o
-
-bstree-tests.o: src/tests/bstree-tests.c
-	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c src/tests/bstree-tests.c -o build/bstree-tests.o
+%-tests.o: src/tests/%-tests.c
+	gcc $(TEST_FLAGS)$(DEBUG_FLAGS)$(DEFAULT_FLAGS) -c $^ -o build/$@
