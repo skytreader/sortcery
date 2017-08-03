@@ -13,7 +13,7 @@ be modified accordingly.
 @param limit
     The length of the array.
 */
-void insert(int arr[], int sorted_limit, int limit){
+void insert(int arr[], unsigned int sorted_limit, unsigned int limit){
     // These cases make no sense.
     if(limit < 0 || sorted_limit > limit){
         exit(1);
@@ -23,7 +23,7 @@ void insert(int arr[], int sorted_limit, int limit){
         return;
     }
     
-    int i;
+    unsigned int i;
     for(i = sorted_limit; i >= 0; i--){
         int move_candidate = arr[i + 1];
         if(move_candidate < arr[i]){
@@ -41,8 +41,8 @@ Sorts the given array from indices [0, limit).
 @param limit
     Hopefully, the length of the array.
 */
-void insertion_sort(int arr[], int limit){
-    int i;
+void insertion_sort(int arr[], unsigned int limit){
+    unsigned int i;
     for(i = 1; i < limit; i++){
         insert(arr, i, limit);
     }
