@@ -14,7 +14,7 @@ ifeq ($(DEBUG), y)
     DEBUG_FLAGS = -g 
 endif
 
-DEFAULT_FLAGS = -fstack-protector-strong
+DEFAULT_FLAGS = -fstack-protector-strong -Wall -Wextra
 END_FLAGS = -lcriterion -lm
 
 ################################################################################

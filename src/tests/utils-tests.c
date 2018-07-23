@@ -141,7 +141,6 @@ Test(shift_tests, whole_array_equivalent){
 Test(stack_tests, init){
     int stack_size = 3;
     stack s;
-    cr_assert_neq(s.size, stack_size, "Initial declaration of stack is sizeless.");
     init_stack(&s, stack_size);
     cr_assert_eq(s.size, stack_size, "Post init, s has size.");
 }
@@ -149,12 +148,11 @@ Test(stack_tests, init){
 Test(stack_tests, pushpop_happy){
     int stack_size = 3;
     stack s;
-    cr_assert_neq(s.size, stack_size, "Initial declaration of stack is sizeless.");
     init_stack(&s, stack_size);
     cr_assert_eq(s.size, stack_size, "Post init, s has size.");
     cr_assert_eq(s.head, 0, "Pre-push check.");
     push(&s, 8);
     cr_assert_eq(s.head, 1, "Post-push check.");
-    int karl_popper = pop(&s);
+    pop(&s);
     cr_assert_eq(s.head, 0, "Post-pop check.");
 }

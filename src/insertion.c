@@ -15,7 +15,7 @@ be modified accordingly.
 */
 void insert(int arr[], unsigned int sorted_limit, unsigned int limit){
     // These cases make no sense.
-    if(limit < 0 || sorted_limit > limit){
+    if(sorted_limit > limit){
         exit(1);
     }
 
@@ -23,7 +23,7 @@ void insert(int arr[], unsigned int sorted_limit, unsigned int limit){
         return;
     }
     
-    unsigned int i;
+    int i;
     for(i = sorted_limit; i >= 0; i--){
         int move_candidate = arr[i + 1];
         if(move_candidate < arr[i]){
