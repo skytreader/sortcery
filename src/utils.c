@@ -153,6 +153,12 @@ void printarr(int arr[], int limit){
     printf("\n");
 }
 
+int cmp_int(const void *a, const void *b){
+    int _a = *((int *) a);
+    int _b = *((int *) b);
+    return _a - b;
+}
+
 void init_stack(stack *s, int size){
     (*s).stack = (int*) malloc(sizeof(int) * size);
     (*s).size = size;

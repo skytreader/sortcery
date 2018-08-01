@@ -12,8 +12,9 @@ be modified accordingly.
     The last index of the sorted part of the array.
 @param limit
     The length of the array.
+@param comparator
 */
-void insert(int arr[], unsigned int sorted_limit, unsigned int limit){
+void insert(void *arr, size_t sorted_limit, size_t limit, int (*comparator)(const void *, const void *)){
     // These cases make no sense.
     if(sorted_limit > limit){
         exit(1);
@@ -41,9 +42,9 @@ Sorts the given array from indices [0, limit).
 @param limit
     Hopefully, the length of the array.
 */
-void insertion_sort(int arr[], unsigned int limit){
+void insertion_sort(void *arr, size_t limit, int (*comparator)(const void *, const void *)){
     unsigned int i;
     for(i = 1; i < limit; i++){
-        insert(arr, i, limit);
+        insert(arr, i, limit, comparator);
     }
 }
