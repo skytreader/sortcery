@@ -35,7 +35,7 @@ void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_size, int 
         unsigned char *cib_index = base_pointer + item_size * i;
         memcpy(move_cand_buffer, mcb_index, item_size);
         memcpy(cur_item_buffer, cib_index, item_size);
-        if(comparator((void *) move_cand_buffer, (void *) cur_item_buffer)){
+        if(comparator((void *) move_cand_buffer, (void *) cur_item_buffer) < 0){
             safe_swap(arr, i, i + 1, limit);
         } else{
             break;
