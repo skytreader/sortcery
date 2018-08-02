@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "insertion.h"
 #include "utils.h"
@@ -25,11 +26,16 @@ void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_size, int 
     }
     
     int i;
-    unsigned char buffer[item_size];
+    unsigned char *base_pointer = (unsigned char *) arr;
+    unsigned char move_cand_buffer[item_size];
+    unsigned char cur_item_buffer[item_size];
     for(i = sorted_limit; i >= 0; i--){
         // int move_candidate = arr[i + 1];
-        memcpy(buffer, arr + item_size * (i + 1), item_size);
-        if(move_candidate < arr[i]){
+        unsigned char *mcb_index = base_pointer + item_size * (i + 1);
+        unsigned char *cib_index = base_pointer + item_size * i;
+        memcpy(move_cand_buffer, mcb_index, item_size);
+        memcpy(cur_item_buffer, cib_index, item_size);
+        if(comparator((void *) move_cand_buffer, (void *) cur_item_buffer)){
             safe_swap(arr, i, i + 1, limit);
         } else{
             break;
