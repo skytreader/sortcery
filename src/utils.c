@@ -156,7 +156,7 @@ void printarr(int arr[], int limit){
 int cmp_int(const void *a, const void *b){
     int _a = *((int *) a);
     int _b = *((int *) b);
-    return _a - b;
+    return _a - _b;
 }
 
 void init_stack(stack *s, int size){
