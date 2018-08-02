@@ -14,7 +14,7 @@ be modified accordingly.
     The length of the array.
 @param comparator
 */
-void insert(void *arr, size_t sorted_limit, size_t limit, int (*comparator)(const void *, const void *)){
+void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_size, int (*comparator)(const void *, const void *)){
     // These cases make no sense.
     if(sorted_limit > limit){
         exit(1);
@@ -25,8 +25,10 @@ void insert(void *arr, size_t sorted_limit, size_t limit, int (*comparator)(cons
     }
     
     int i;
+    unsigned char buffer[item_size];
     for(i = sorted_limit; i >= 0; i--){
-        int move_candidate = arr[i + 1];
+        // int move_candidate = arr[i + 1];
+        memcpy(buffer, arr + item_size * (i + 1), item_size);
         if(move_candidate < arr[i]){
             safe_swap(arr, i, i + 1, limit);
         } else{
@@ -42,9 +44,12 @@ Sorts the given array from indices [0, limit).
 @param limit
     Hopefully, the length of the array.
 */
-void insertion_sort(void *arr, size_t limit, int (*comparator)(const void *, const void *)){
+void insertion_sort(
+    void *arr, size_t limit, size_t item_size,
+    int (*comparator)(const void *, const void *)
+){
     unsigned int i;
     for(i = 1; i < limit; i++){
-        insert(arr, i, limit, comparator);
+        insert(arr, i, limit, item_size, comparator);
     }
 }
