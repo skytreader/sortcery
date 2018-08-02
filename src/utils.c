@@ -159,6 +159,12 @@ int cmp_int(const void *a, const void *b){
     return _a - _b;
 }
 
+int cmp_float(const void *a, const void *b){
+    float _a = *((float *) a);
+    float _b = *((float *) b);
+    return _a - _b;
+}
+
 void init_stack(stack *s, int size){
     (*s).stack = (int*) malloc(sizeof(int) * size);
     (*s).size = size;

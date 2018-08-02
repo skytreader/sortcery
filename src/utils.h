@@ -52,6 +52,7 @@ void shift(int arr[], int limit, int i, int shift_limit, int shift_count);
 // TODO Make this return/operate on a char*
 void printarr(int arr[], int limit);
 int cmp_int(const void *a, const void *b);
+int cmp_float(const void *a, const void *b);
 
 typedef struct STACK {
     int *stack;
