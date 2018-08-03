@@ -15,7 +15,7 @@ be modified accordingly.
     The length of the array.
 @param comparator
 */
-void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_size, int (*comparator)(const void *, const void *)){
+static void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_size, int (*comparator)(const void *, const void *)){
     // These cases make no sense.
     if(sorted_limit > limit){
         exit(1);
