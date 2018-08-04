@@ -51,6 +51,18 @@ void safe_swap(int arr[], int i, int j, int limit);
 void shift(int arr[], int limit, int i, int shift_limit, int shift_count);
 // TODO Make this return/operate on a char*
 void printarr(int arr[], int limit);
+
+/*
+The following compare functions should return a value n subject to the following
+conditions:
+
+    n > 0 if a > b
+    n == 0 if a == b
+    n < 0 if a < b
+
+Passed to a sorting function, they should sort in ascending order. Passed to
+`find_extreme` they should return the maximum.
+*/
 int cmp_int(const void *a, const void *b);
 int cmp_float(const void *a, const void *b);
 

@@ -30,7 +30,6 @@ static void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_siz
     unsigned char move_cand_buffer[item_size];
     unsigned char cur_item_buffer[item_size];
     for(i = sorted_limit; i >= 0; i--){
-        // int move_candidate = arr[i + 1];
         unsigned char *mcb_index = base_pointer + item_size * (i + 1);
         unsigned char *cib_index = base_pointer + item_size * i;
         memcpy(move_cand_buffer, mcb_index, item_size);
