@@ -8,6 +8,7 @@ Define exit codes here. Keep them sorted alphabetically.
 
 #define arrsize(arr) sizeof(arr) / sizeof(arr[0])
 #define logb(a, base) log(a) / log(base)
+#define ptrind(bp, item_size, index) bp + item_size * index
 
 #define define_max(T) \
 T template_max_##T(T* arr, int limit){ \

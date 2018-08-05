@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -30,8 +31,14 @@ static void insert(void *arr, size_t sorted_limit, size_t limit, size_t item_siz
     unsigned char move_cand_buffer[item_size];
     unsigned char cur_item_buffer[item_size];
     for(i = sorted_limit; i >= 0; i--){
-        unsigned char *mcb_index = base_pointer + item_size * (i + 1);
-        unsigned char *cib_index = base_pointer + item_size * i;
+        unsigned char *omcb_index = base_pointer + item_size * (i + 1);
+        unsigned char *mcb_index = ptrind(base_pointer, item_size, i + 1);
+        printf("Original mcb_index: %p\n", omcb_index);
+        printf("macro-computed mcb_index: %p\n", mcb_index);
+        unsigned char *ocib_index = base_pointer + item_size * i;
+        unsigned char *cib_index = ptrind(base_pointer, item_size, i);
+        printf("Original cib_index: %p\n", ocib_index);
+        printf("macro-computed cib_index: %p\n", cib_index);
         memcpy(move_cand_buffer, mcb_index, item_size);
         memcpy(cur_item_buffer, cib_index, item_size);
         if(comparator((void *) move_cand_buffer, (void *) cur_item_buffer) < 0){
