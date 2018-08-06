@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 /*
 This used to contain a definition for `insert`--the actual function that does
 all the heavy lifting for insertion sort. However, it was made `static` because
